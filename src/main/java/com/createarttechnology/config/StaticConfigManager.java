@@ -1,10 +1,9 @@
 package com.createarttechnology.config;
 
+import com.createarttechnology.jutil.StringUtil;
 import com.google.common.base.Splitter;
 import com.google.common.collect.Sets;
-import com.createarttechnology.jutil.StringUtil;
 
-import java.io.FileInputStream;
 import java.util.Properties;
 import java.util.Set;
 
@@ -20,6 +19,7 @@ public class StaticConfigManager {
                 try {
                     loadConfig(configName);
                 } catch (Exception ignored) {
+                    ignored.printStackTrace();
                 }
             }
         }
@@ -27,7 +27,7 @@ public class StaticConfigManager {
 
     private void loadConfig(String configName) throws Exception {
         Properties properties = new Properties();
-        properties.load(new FileInputStream(configName));
+        properties.load(this.getClass().getResourceAsStream("/" + configName));
         System.setProperties(properties);
     }
 
