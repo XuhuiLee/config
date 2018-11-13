@@ -2,7 +2,7 @@ package com.createarttechnology.config;
 
 import com.google.common.base.Splitter;
 import com.google.common.collect.Sets;
-import jutil.StringUtil;
+import com.createarttechnology.jutil.StringUtil;
 
 import java.io.FileInputStream;
 import java.util.Properties;

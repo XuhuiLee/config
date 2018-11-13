@@ -1,7 +1,7 @@
 package com.createarttechnology.config;
 
 import com.google.common.base.Preconditions;
-import jutil.StringUtil;
+import com.createarttechnology.jutil.StringUtil;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;

@@ -1,6 +1,6 @@
 package com.createarttechnology.config;
 
-import jutil.StringUtil;
+import com.createarttechnology.jutil.StringUtil;
 
 import java.io.IOException;
 import java.io.StringReader;
