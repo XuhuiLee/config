@@ -15,7 +15,7 @@ public abstract class ConfigFactory {
 
     private static CuratorFramework client;
 
-    public static Config getConfig(String configName, ConfigWatcher configWatcher) {
+    public static Config load(String configName, ConfigWatcher configWatcher) {
         Preconditions.checkArgument(StringUtil.isNotEmpty(configName));
         Preconditions.checkNotNull(configWatcher);
 
