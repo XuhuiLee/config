@@ -20,7 +20,7 @@ public abstract class ConfigFactory {
         Preconditions.checkNotNull(configWatcher);
 
         if (client == null) {
-            String zookeeperConnectionString = "www.createarttechnology.com:2181";
+            String zookeeperConnectionString = System.getProperty("process.properties.zookeeperConnectionString");
             RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
             client = CuratorFrameworkFactory.newClient(zookeeperConnectionString, retryPolicy);
             client.start();
