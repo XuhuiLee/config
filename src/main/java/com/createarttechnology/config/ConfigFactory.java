@@ -41,12 +41,11 @@ public abstract class ConfigFactory {
                     case NodeDataChanged:
                     case NodeDeleted:
                         loadConfig(config, configName, configWatcher);
-                        configWatcher.changed(config);
                         return;
                     default:
                 }
-            });
-        } catch (IOException e) {
+            }).forPath(getConfigPath(configName));
+        } catch (Exception e) {
             logger.error("load config error, e:", e);
         }
         return config;
@@ -58,8 +57,8 @@ public abstract class ConfigFactory {
             byte[] data = client.getData().forPath(getConfigPath(configName));
             if (data != null) {
                 config.load(new String(data));
-                configWatcher.changed(config);
             }
+            configWatcher.changed(config);
         } catch (Exception e) {
             logger.error("error, e:", e);
         }
