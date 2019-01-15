@@ -32,7 +32,13 @@ public abstract class ConfigFactory {
                 String zookeeperConnectionString = System.getProperty("process.properties.zookeeperConnectionString");
                 logger.info("process.properties.zookeeperConnectionString:{}", zookeeperConnectionString);
                 RetryPolicy retryPolicy = new ExponentialBackoffRetry(1000, 3);
-                client = CuratorFrameworkFactory.newClient(zookeeperConnectionString, retryPolicy);
+                String zkAuth = System.getenv("ZK_AUTH");
+                client = CuratorFrameworkFactory
+                        .builder()
+                        .authorization("digest", zkAuth.getBytes())
+                        .connectString(zookeeperConnectionString)
+                        .retryPolicy(retryPolicy)
+                        .build();
                 client.start();
                 if (profile == null) {
                     profile = "dev";
