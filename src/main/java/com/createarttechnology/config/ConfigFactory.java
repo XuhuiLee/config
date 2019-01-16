@@ -18,7 +18,7 @@ public abstract class ConfigFactory {
 
     private static CuratorFramework client;
 
-    private static String profile = System.getProperty("process.properties.profile");
+    private static String profile;
 
     public static Config load(String configName, ConfigWatcher configWatcher) {
         Preconditions.checkArgument(StringUtil.isNotEmpty(configName));
@@ -40,6 +40,7 @@ public abstract class ConfigFactory {
                         .retryPolicy(retryPolicy)
                         .build();
                 client.start();
+                profile = System.getProperty("process.properties.profile");
                 if (profile == null) {
                     profile = "dev";
                 }
