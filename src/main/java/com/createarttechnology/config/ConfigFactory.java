@@ -50,7 +50,7 @@ public abstract class ConfigFactory {
                         .build();
                 client.start();
 
-                logger.info("[zookeeperConnectionString:{}, profile:{}]", zookeeperConnectionString, profile);
+                logger.info("[use zookeeper: {}, profile:{}]", zookeeperConnectionString, profile);
             }
         }
     }
